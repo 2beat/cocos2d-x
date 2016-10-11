@@ -63,6 +63,8 @@ public:
     void init(float globalOrder, GLuint textureID, GLProgramState* glProgramState, BlendFunc blendType, Primitive* primitive, const Mat4& mv, uint32_t flags);
     CC_DEPRECATED_ATTRIBUTE void init(float globalOrder, GLuint textureID, GLProgramState* glProgramState, BlendFunc blendType, Primitive* primitive,const Mat4& mv);
     
+    void setDepthTest(bool enable);
+    bool isDepthTest();
     /**Get the generated material ID.*/
     uint32_t getMaterialID() const { return _materialID; }
     /**Get the texture ID used for drawing.*/
@@ -83,6 +85,7 @@ protected:
     BlendFunc _blendType;
     Primitive* _primitive;
     Mat4 _mv;
+    bool _useDepthTest;
 };
 
 NS_CC_END

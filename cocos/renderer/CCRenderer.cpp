@@ -459,6 +459,16 @@ void Renderer::processRenderCommand(RenderCommand* command)
     {
         flush();
         auto cmd = static_cast<PrimitiveCommand*>(command);
+        if (cmd->isDepthTest()) {
+            glEnable(GL_DEPTH_TEST);
+            glDepthMask(true);
+            glEnable(GL_BLEND);
+            
+            RenderState::StateBlock::_defaultState->setDepthTest(true);
+            RenderState::StateBlock::_defaultState->setDepthWrite(true);
+            RenderState::StateBlock::_defaultState->setBlend(true);
+        }
+        
         CCGL_DEBUG_INSERT_EVENT_MARKER("RENDERER_PRIMITIVE_COMMAND");
         cmd->execute();
     }
