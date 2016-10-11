@@ -57,6 +57,8 @@ void PrimitiveCommand::init(float globalOrder, GLuint textureID, GLProgramState*
     
     RenderCommand::init(globalOrder, mv, flags);
     
+    _useDepthTest = false;
+    
     _primitive = primitive;
     
     _mv = mv;
@@ -68,6 +70,16 @@ void PrimitiveCommand::init(float globalOrder, GLuint textureID, GLProgramState*
         _glProgramState = glProgramState;
         
     }
+}
+
+void PrimitiveCommand::setDepthTest(bool enable)
+{
+    _useDepthTest = enable;
+}
+
+bool PrimitiveCommand::isDepthTest()
+{
+    return _useDepthTest;
 }
 
 void PrimitiveCommand::init(float globalOrder, GLuint textureID, GLProgramState* glProgramState, BlendFunc blendType, Primitive* primitive,const Mat4& mv)
