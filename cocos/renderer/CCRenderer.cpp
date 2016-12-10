@@ -464,6 +464,16 @@ void Renderer::processRenderCommand(RenderCommand* command)
         
         CCGL_DEBUG_INSERT_EVENT_MARKER("RENDERER_PRIMITIVE_COMMAND");
         cmd->execute();
+        
+        if (cmd->isDepthTest()) {
+            glDisable(GL_DEPTH_TEST);
+            glDepthMask(false);
+            glDisable(GL_BLEND);
+            
+            RenderState::StateBlock::_defaultState->setDepthTest(false);
+            RenderState::StateBlock::_defaultState->setDepthWrite(false);
+            RenderState::StateBlock::_defaultState->setBlend(false);
+        }
     }
     else
     {
