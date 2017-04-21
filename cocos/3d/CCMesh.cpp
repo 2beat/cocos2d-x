@@ -378,6 +378,7 @@ void Mesh::draw(Renderer* renderer, float globalZOrder, const Mat4& transform, u
         return;
 
     bool isTransparent = (_isTransparent || color.w < 1.f);
+    isTransparent = false;
     float globalZ = isTransparent ? 0 : globalZOrder;
     if (isTransparent)
         flags |= Node::FLAGS_RENDER_AS_3D;
