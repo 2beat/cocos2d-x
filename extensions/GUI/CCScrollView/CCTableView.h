@@ -276,16 +276,16 @@ public:
     virtual void onTouchCancelled(Touch *pTouch, Event *pEvent) override;
 
 protected:
-    long __indexFromOffset(Vec2 offset);
-    long _indexFromOffset(Vec2 offset);
-    Vec2 __offsetFromIndex(ssize_t index);
-    Vec2 _offsetFromIndex(ssize_t index);
+    virtual long __indexFromOffset(Vec2 offset);
+    virtual long _indexFromOffset(Vec2 offset);
+    virtual Vec2 __offsetFromIndex(ssize_t index);
+    virtual Vec2 _offsetFromIndex(ssize_t index);
 
-    void _moveCellOutOfSight(TableViewCell *cell);
-    void _setIndexForCell(ssize_t index, TableViewCell *cell);
-    void _addCellIfNecessary(TableViewCell * cell);
+    virtual void _moveCellOutOfSight(TableViewCell *cell);
+    virtual void _setIndexForCell(ssize_t index, TableViewCell *cell);
+    virtual void _addCellIfNecessary(TableViewCell * cell);
 
-    void _updateCellPositions();
+    virtual void _updateCellPositions();
 
 
     TableViewCell *_touchedCell;
@@ -326,7 +326,7 @@ protected:
     bool _isUsedCellsDirty;
 
 public:
-    void _updateContentSize();
+    virtual void _updateContentSize();
 
 };
 
